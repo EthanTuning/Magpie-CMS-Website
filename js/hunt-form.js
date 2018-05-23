@@ -2,7 +2,7 @@ $(document).ready(init);
 
 function init() { 
     $("#hunt-form-save-btn").on("click", saveHuntForm); 
-    $("hunt-form-submit-btn").on("click", submitHuntForm);
+    $("#hunt-form-submit-btn").on("click", submitHuntForm);
 }
 
 function saveHuntForm() { 
