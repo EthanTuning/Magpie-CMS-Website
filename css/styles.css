@@ -250,12 +250,14 @@ p {
 
 /******** Review Hunt ********/
 
-#review-hunt-abbreviation {
+#review-hunt-abbreviation,
+#review-hunt-award-name {
     text-transform: uppercase; 
     font-size: 2.2em;
 }
 
-#review-hunt-name {
+#review-hunt-name,
+#review-hunt-award-value {
     text-transform: uppercase;
     color: #979797;
 }
@@ -271,7 +273,10 @@ p {
 
 #review-hunt-badge-view-btn,
 #review-hunt-badge-edit-btn,
-#review-hunt-badge-delete-btn {
+#review-hunt-badge-delete-btn,
+#review-hunt-award-view-btn,
+#review-hunt-award-edit-btn,
+#review-hunt-award-delete-btn {
     height: 40px;
     width: 35px;
     text-align: center;
