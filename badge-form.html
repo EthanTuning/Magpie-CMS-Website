@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/ionicons@4.1.1/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <title>Welcome</title>
+</head>
+<body>
+    <header id="menu-header">
+        <img id="logo" src="assets/logo-final.png">
+    </header>
+    <nav id="menu">
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul id="menu-list">
+            <li class="menu-item"><a href="hunts.html">HUNTS</a></li>
+            <li class="menu-item"><a href="hunt-form.html">CREATE</a></li>
+            <li class="menu-item"><a href="contact.html">CONTACT US</a></li>
+            <li class="menu-item"><a href="legal.html">LEGAL STUFF</a></li>
+            <li class="menu-item"><a href="account.html">ACCOUNT</a></li>
+            <li class="menu-item"><a href="#">LOG OUT</a></li>
+        </ul>
+    </nav>
+    <section class="section">
+        <div class="container container-standard">
+            <h1 class="title is-1">BADGE INFORMATION</h1>
+            <!--ALL OF THESE FIELDS WILL NEED TO BE POPULATED WHEN CREATING/VIEWING/EDITING BADGE DATA-->
+            <form id="badge-form">
+                <h2 class="title is-3">BADGE NAME</h2>
+                <p class="content">
+                    What is this item or location called?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="badge-name" class="input" type="text" placeholder="Badge name" autofocus>
+                    </div>
+                </div>
+                <h2 class="title is-3">DESCRIPTION</h2>
+                <p class="content">
+                    Enter a brief explanation about this item or location. Why is it special? What should the scavenger know about it?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <textarea id="badge-description" class="input" type="text" placeholder="Badge description"></textarea>
+                    </div>
+                </div>
+                <h2 class="title is-3">LOCATION</h2>
+                <p class="content">
+                    To locate this item, click to drop a pin on the map or enter the latitude and longitude
+                </p>
+                <div id="map-container">
+                    
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input id="badge-latitude" class="input" type="number" placeholder="latitude"></input>
+                        <input id="badge-longitude" class="input" type="number" placeholder="longitude"></input>
+                    </div>
+                </div>
+                <h2 class="title is-3">QR CODE</h2>
+                <p class="content">
+                        Would you like a QR code to be generated to print and post near your badge location? 
+                        This is helpful if your badge location is in a place where phone GPS isn't reliable or 
+                        you would like hunters to have to get close to the location to be able to collect the badge.
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio"><input id="badge-qr-yes" type="radio">Yes</label>
+                        <label class="radio"><input id="badge-qr-no" type="radio">No</label>
+                    </div>
+                </div>
+                <h2 class="title is-3">LANDMARK IMAGE</h2>
+                <p class="content">
+                    Upload a photo of the item hunters are looking for.
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="badge-landmark-image" type="file">
+                    </div>
+                </div>
+                <h2 class="title is-3">BADGE ICON</h2>
+                <p class="content">
+                    Upload a PNG icon to represent this item or location. Don't have one? Choose from one of our default badges.
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="badge-icon" type="file">
+                        <h2 class="title is-3">- OR -</h2>
+                        <div class="field is-grouped">
+                            <label class="radio">
+                                <input id="badge-icon-default-1" type="radio">
+                                <img class="default-badge-icon" src="assets/CEB-01.svg">
+                            </label>
+                            <label class="radio">
+                                <input id="badge-icon-default-1" type="radio">
+                                <img class="default-badge-icon" src="assets/einstein_Bagel-01.svg">
+                            </label>
+                            <label class="radio">
+                                <input id="badge-icon-default-1" type="radio">
+                                <img class="default-badge-icon" src="assets/jfk_Library-01.svg">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns btn-group">
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <button id="badge-form-back-btn" class="button is-rounded btn-standard">CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <!--UNCOMMENT THIS<button id="badge-form-save-btn" class="button is-rounded btn-standard">SAVE</button>-->
+                                <!--DELETE THIS--><a id="badge-form-save-btn" class="button is-rounded btn-standard" href="review-hunt.html">SAVE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

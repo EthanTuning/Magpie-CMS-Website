@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/ionicons@4.1.1/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <title>Welcome</title>
+</head>
+<body>
+    <header id="menu-header">
+        <img id="logo" src="assets/logo-final.png">
+    </header>
+    <nav id="menu">
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul id="menu-list">
+            <li class="menu-item"><a href="hunts.html">HUNTS</a></li>
+            <li class="menu-item"><a href="hunt-form.html">CREATE</a></li>
+            <li class="menu-item"><a href="contact.html">CONTACT US</a></li>
+            <li class="menu-item"><a href="legal.html">LEGAL STUFF</a></li>
+            <li class="menu-item"><a href="account.html">ACCOUNT</a></li>
+            <li class="menu-item"><a href="#">LOG OUT</a></li>
+        </ul>
+    </nav>
+    <section class="section">
+        <div class="container container-standard">
+            <h1 class="title is-1">AWARD INFORMATION</h1>
+            <!--ALL OF THESE FIELDS WILL NEED TO BE POPULATED WHEN CREATING/VIEWING/EDITING AWARD DATA-->
+            <form id="award-form">    
+                <h2 class="title is-3">AWARD NAME</h2>
+                <p class="content">
+                    What will be awarded to hunters who complete the hunt?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="award-name" class="input" type="text" placeholder="Free Coffee">
+                    </div>
+                </div>    
+                <h2 class="title is-3">VALUE</h2>
+                <p class="content">
+                    Does your award have a monetary value?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <label id="award-value-yes" class="radio"><input id="award-name" type="radio">Yes</label>
+                        <label id="award-value-no" class="radio"><input id="award-name" type="radio">No</label>
+                    </div>
+                </div>
+                <p class="content">
+                    How much money is your award worth?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="award-value" class="input" type="number" placeholder="$14.00">
+                    </div>
+                </div>    
+                <h2 class="title is-3">LOCATION</h2>
+                <p class="content">
+                    What is the name of the place that hunters need to visit to collect their awards?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="award-location-name" class="input" type="text" placeholder="Some place">
+                    </div>
+                    <p class="content">
+                        To locate this item, click to drop a pin on the map or enter the latitude and longitude
+                    </p>
+                    <div id="map-container">
+                        
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input id="award-latitude" class="input" type="number" placeholder="latitude"></input>
+                            <input id="award-longitude" class="input" type="number" placeholder="longitude"></input>
+                        </div>
+                    </div>
+                    <h2 class="title is-3">TERMS AND CONDITIONS</h2>
+                    <p class="content">
+                       If any terms and conditions apply to the award or to the collection of the award, please state them below.</p>
+                    <div class="field">
+                        <div class="control">
+                            <textarea id="award-terms" class="textarea" placeholder="Terms and conditions"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns btn-group">
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <button id="award-form-back-btn" class="button is-rounded btn-standard">CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <!--UNCOMMENT THIS<button id="award-form-save-btn" class="button is-rounded btn-standard">SAVE</button>-->
+                                <!--DELETE THIS--><a id="award-form-save-btn" class="button is-rounded btn-standard" href="review-hunt.html">SAVE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </form>
+        </div>
+    </section>
+</body>
+</html>

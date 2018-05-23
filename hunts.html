@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/ionicons@4.1.1/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <title>Welcome</title>
+</head>
+<body>
+    <header id="menu-header">
+        <img id="logo" src="assets/logo-final.png">
+    </header>
+    <nav id="menu">
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul id="menu-list">
+            <li class="menu-item"><a href="hunts.html">HUNTS</a></li>
+            <li class="menu-item"><a href="hunt-form.html">CREATE</a></li>
+            <li class="menu-item"><a href="contact.html">CONTACT US</a></li>
+            <li class="menu-item"><a href="legal.html">LEGAL STUFF</a></li>
+            <li class="menu-item"><a href="account.html">ACCOUNT</a></li>
+            <li class="menu-item"><a href="#">LOG OUT</a></li>
+        </ul>
+    </nav>
+    <section class="section">
+        <div class="container container-standard">
+            <h1 class="title is-1">MY HUNTS</h1>
+            <h2 class="title is-3">IN PROGRESS</h2>
+            <div class="columns is-multiline">
+                <!--POPULATED THIS IS WHERE YOU WILL APPEND ALL HUNTS FOR A PARTICULAR CREATOR-->
+                <!--CRAFT UP THESE COLUMN DIVS (SAME CLASS AND ID NAMES) WITH THE PROPER DATA-->
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt1</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Mountain Sheep.png">
+                </div>
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt2</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Current Event.png">
+                </div>
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt3</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Light Reading.png">
+                </div>
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt4</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Dance of the Redband.png">
+                </div>
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt5</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Michael P. Anderson Memorial.png">
+                </div>
+                <div id="add-new-hunt-btn-container" class="column is-one-quarter">
+                    <a id="add-new-hunt-btn" href="hunt-form.html">+<br>CREATE HUNT</a>
+                </div>
+            </div>
+            <h2 class="title is-3">UNDER REVIEW</h2>
+            <div class="columns is-multiline">
+                <!--POPULATED THIS IS WHERE YOU WILL APPEND ALL HUNTS FOR A PARTICULAR CREATOR-->
+                <!--CRAFT UP THESE COLUMN DIVS (SAME CLASS AND ID NAMES) WITH THE PROPER DATA-->
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt9</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Mountain Sheep.png">
+                </div>
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt11</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Current Event.png">
+                </div>
+            </div>
+            <h2 class="title is-3">PUBLISHED</h2>
+            <div class="columns is-multiline">
+                <!--POPULATED THIS IS WHERE YOU WILL APPEND ALL HUNTS FOR A PARTICULAR CREATOR-->
+                <!--CRAFT UP THESE COLUMN DIVS (SAME CLASS AND ID NAMES) WITH THE PROPER DATA-->
+                <div class="column is-one-quarter">
+                    <!--POPULATED HUNT NAME--><p id="hunts-hunt-name" class="content">Hunt6</p>
+                    <!--POPULATED HUNT SUPER BADGE--><img id="hunts-hunt-super-badge-icon" src="assets/Magpie__Mountain Sheep.png">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

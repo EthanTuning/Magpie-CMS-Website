@@ -1,0 +1,350 @@
+/******** Base ********/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    color: #231f20;
+}
+
+.section h1 {
+    text-align: center;
+    color: #979797;
+}
+
+.section h2 {
+    color: #52D291;
+    padding-top: .8em;
+}
+
+.section h3 {
+    color: #979797;
+}
+
+.container-standard {
+    max-width: 50em;
+}
+
+/******** Splash Page ********/
+
+#intro-section {
+    text-align: center;
+    background: #52D291;
+    background: -webkit-linear-gradient(to right, #40AAF2, #52D291);
+    background: linear-gradient(to right, #40AAF2, #52D291);
+}
+
+#intro-container h1 {
+    color: white;
+}
+
+#intro-container img {
+    width: 20em;
+    padding-bottom: 5em;
+}
+
+#intro-container a {
+    padding-left: 4em;
+    padding-right: 4em;
+    border-width: 2px;
+}
+
+#intro-container a:hover {
+    color: #52D291;
+}
+
+#want-to-contribute-section {
+    border-top: 1px solid #A7ACB3;
+}
+
+#want-to-contribute-container,
+#want-to-play-container {
+    padding-top: 8em;
+    padding-bottom: 8em;
+}
+
+#want-to-contribute-container h1,
+#want-to-play-container h1 {
+    color: #979797;
+}
+
+#want-to-contribute-container h1,
+#want-to-play-container h1 {
+    padding-bottom: 1em;
+}
+
+#want-to-contribute-container h2,
+#want-to-play-container h2 {
+    padding: .5em;
+    color: #979797;
+}
+
+#want-to-play-container img {
+    justify-content: center;
+    width: 18em;
+}
+
+#store-icons img {
+    height: 92px;
+    width: 275px;
+}
+
+.footer {
+    background-color: #d8d8d8;
+}
+
+.footer a {
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em
+}
+
+/******** Buttons ********/
+
+.btn-standard {
+    background-color: #52D291;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: auto;
+}
+
+.btn-standard:hover {
+    background-color: #52D291;
+    color: white;
+}
+
+.btn-group {
+    padding-top: 2em;
+}
+
+.btn-group a, .btn-group button {
+    width: 100%;
+}
+
+/******** Navbar ********/
+
+#menu-header {
+    background: #52D291;
+    background: -webkit-linear-gradient(to right, #40AAF2, #52D291);
+    background: linear-gradient(to right, #40AAF2, #52D291);
+    text-align: center;
+}
+
+#logo {
+    width: 150px;
+    padding: 1.5em;
+}
+
+#menu .menu-btn {
+    display: none;
+}
+
+#menu-list {
+    list-style: none;
+    padding: 0em;
+    text-align: center;
+}
+
+.menu-item {
+    display: inline-block;
+    padding: 1em 2em;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #A7ACB3;
+    font-weight: bold;
+}
+
+/******** Responsive Menu ********/
+
+@media screen and (max-width: 940px) {
+
+    #menu-list {
+        overflow: hidden;
+        margin: 0;
+        max-height: 0; 
+        transition: max-height .3s ease-out;
+    }
+
+    .menu-item {
+        display: block;
+        padding: .7em;
+    }
+
+    #menu .menu-icon {
+        cursor: pointer;
+        display: block;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+    }
+
+    #menu .menu-icon .navicon {
+        background: #A7ACB3;
+        display: block;
+        height: 2px;
+        margin: auto;
+        position: relative;
+        transition: background .3s ease-out;
+        width: 18px;
+    }
+
+    #menu .menu-icon .navicon:before,
+    #menu .menu-icon .navicon:after {
+        background: #A7ACB3;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .3s ease-out;
+        width: 100%;
+    }
+
+    #menu .menu-icon .navicon:before {
+        top: 5px;
+    }
+
+    #menu .menu-icon .navicon:after {
+        top: -5px;
+    }
+
+    #menu .menu-btn:checked ~ #menu-list {
+        max-height: 250px;
+    }
+
+    #menu .menu-btn:checked ~ .menu-icon .navicon {
+        background: transparent;
+    }
+
+    #menu .menu-btn:checked ~ .menu-icon .navicon:before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    #menu .menu-btn:checked ~ .menu-icon .navicon:after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+}
+
+/******** Welcome Page ********/
+
+#welcome-text {
+    max-width: 32em;
+}
+
+/******** Contact Page ********/
+
+#email-submit-btn {
+    margin-bottom: 2em;
+}
+
+/******** Forms ********/
+
+.section input {
+    max-width: 20em;
+}
+
+/******** Review Hunt ********/
+
+#review-hunt-abbreviation {
+    text-transform: uppercase; 
+    font-size: 2.2em;
+}
+
+#review-hunt-name {
+    text-transform: uppercase;
+    color: #979797;
+}
+
+#review-hunt-super-badge-image {
+    height: 256px;
+    width: 256px;
+}
+
+#review-hunt-badge-image {
+    width: 100%;
+}
+
+#review-hunt-badge-view-btn,
+#review-hunt-badge-edit-btn,
+#review-hunt-badge-delete-btn {
+    height: 40px;
+    width: 35px;
+    text-align: center;
+}
+
+#review-hunt-badge-name {
+    text-align: center;
+    color: #979797;
+    text-transform: uppercase;
+}
+
+#add-new-badge-btn-container {
+    border: #52D291 dotted 5px;
+    text-align: center;
+    height: 200px;
+    margin-top: 2em;
+}
+
+#add-new-badge-btn {
+    width: 100%;
+    height: 100%;
+    color: #52D291;
+    font-size: 2.2em;
+}
+
+#add-new-award-btn-container {
+    border: #52D291 dotted 5px;
+    text-align: center;
+    height: 200px;
+    width: 100%;
+    margin-top: 2em;
+}
+
+#add-new-award-btn {
+    width: 100%;
+    height: 100%;
+    color: #52D291;
+    font-size: 2.7em;
+}
+
+#submit-hunt-form-approval-btn {
+    margin-top: 2em;
+}
+
+/******** Badge Form ********/
+
+.default-badge-icon {
+    height: 125px;
+    width: 125px;
+}
+
+/******** Hunts ********/
+
+#hunts-hunt-name {
+    text-align: center;
+}
+
+#add-new-hunt-btn-container {
+    border: #52D291 dotted 5px;
+    text-align: center;
+    height: 200px;
+    margin-top: 2em;
+}
+
+#add-new-hunt-btn {
+    width: 100%;
+    height: 100%;
+    color: #52D291;
+    font-size: 2.2em;
+}
+
+/******** Thank You ********/
+
+#thank-you-view-hunts-btn {
+    margin-top: 2em;
+}

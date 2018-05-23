@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/ionicons@4.1.1/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <title>Welcome</title>
+</head>
+<body>
+    <header id="menu-header">
+        <img id="logo" src="assets/logo-final.png">
+    </header>
+    <nav id="menu">
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul id="menu-list">
+            <li class="menu-item"><a href="hunts.html">HUNTS</a></li>
+            <li class="menu-item"><a href="hunt-form.html">CREATE</a></li>
+            <li class="menu-item"><a href="contact.html">CONTACT US</a></li>
+            <li class="menu-item"><a href="legal.html">LEGAL STUFF</a></li>
+            <li class="menu-item"><a href="account.html">ACCOUNT</a></li>
+            <li class="menu-item"><a href="#">LOG OUT</a></li>
+        </ul>
+    </nav>
+    <!--ALL OF THESE FIELDS WILL NEED TO BE POPULATED WHEN CREATING/VIEWING/EDITING HUNT DATA-->
+    <section class="section">
+        <div class="container container-standard">
+            <h1 class="title is-1">HUNT INFORMATION</h1>
+            <form id="hunt-form">
+                <h2 class="title is-3">HUNT NAME</h2>
+                <p class="content">
+                    What is the hunt name you'd like hunters see?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-name" class="input" type="text" placeholder="Hunt name" autofocus>
+                    </div>
+                </div>
+                <h2 class="title is-3">ABBREVIATION</h2>
+                <p class="content">
+                    What is the three letter abbreviation you'd like hunters to see?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-abbreviation" class="input" type="text" placeholder="abr">
+                    </div>
+                </div>
+                <h2 class="title is-3">SUMMARY</h2>
+                <p class="content">
+                    Please provide a brief description of your collection. Description can include
+                    <br>
+                    information such as general location, type of badges to expect, purpose, etc.
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <textarea id="hunt-description" class="textarea" placeholder="This hunt is super fun!"></textarea>
+                    </div>
+                </div>
+                <h2 class="title is-3">CITY</h2>
+                <p class="content">
+                    What town is this hunt in?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-city" class="input" type="text" placeholder="Cheney">
+                    </div>
+                </div>
+                <h2 class="title is-3">STATE</h2>
+                <p class="content">
+                    What state is this hunt in?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-state" class="input" type="text" placeholder="WA">
+                    </div>
+                </div>
+                <h2 class="title is-3">ZIP</h2>
+                <p class="content">
+                    What is the zip code of the town?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-zip" class="input" type="text" placeholder="99004">
+                    </div>
+                </div>
+                <h2 class="title is-3">START DATE</h2>
+                <p class="content">
+                    When does this hunt start?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-start-date" class="input" type="date" placeholder="">
+                    </div>
+                </div>
+                <h2 class="title is-3">END DATE</h2>
+                <p class="content">
+                    When does this hunt end?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-end-date" class="input" type="date" placeholder="">
+                    </div>
+                </div>
+                <h2 class="title is-3">SUPERBADGE</h2>
+                <p class="content">
+                    Upload a PNG icon that represents your entire hunt.
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-super-badge" type="file">
+                    </div>
+                </div>
+                <h2 class="title is-3">HUNT AUDIENCE</h2>
+                <p class="content">
+                    What is the intended audience for this hunt?
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio"><input id="hunt-audience-all" type="radio">All</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio"><input id="hunt-audience-teen" type="radio">Teen (13+)</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio"><input id="hunt-audience-young-adult" type="radio">Young Adult (18+)</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio"><input id="hunt-audience-mature" type="radio">Mature (21+)</label>
+                    </div>
+                </div>
+                <h2 class="title is-3">SPONSOR</h2>
+                <p class="content">
+                    If this hunt is sponsored, tell us who has sponsored ti.
+                </p>
+                <div class="field">
+                    <div class="control">
+                        <input id="hunt-sponsor" class="input" type="text" placeholder="Some sponsor">
+                    </div>
+                </div>
+                <div class="columns btn-group">
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <button id="hunt-form-back-btn" class="button is-rounded btn-standard">BACK</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <button id="hunt-form-save-btn" class="button is-rounded btn-standard">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-one-half">
+                        <div class="field">
+                            <div class="control">
+                                <!--UNCOMMENT THIS <button id="hunt-form-submit-btn" class="button is-rounded btn-standard">NEXT</button>-->
+                                <!--DELETE THIS--><a class="button is-rounded btn-standard" href="review-hunt.html">NEXT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

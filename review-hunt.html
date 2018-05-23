@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/ionicons@4.1.1/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <title>Welcome</title>
+</head>
+<body>
+    <header id="menu-header">
+        <img id="logo" src="assets/logo-final.png">
+    </header>
+    <nav id="menu">
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul id="menu-list">
+            <li class="menu-item"><a href="hunts.html">HUNTS</a></li>
+            <li class="menu-item"><a href="hunt-form.html">CREATE</a></li>
+            <li class="menu-item"><a href="contact.html">CONTACT US</a></li>
+            <li class="menu-item"><a href="legal.html">LEGAL STUFF</a></li>
+            <li class="menu-item"><a href="account.html">ACCOUNT</a></li>
+            <li class="menu-item"><a href="#">LOG OUT</a></li>
+        </ul>
+    </nav>
+    <!--FOR EACH OF THE 'POPULATED' COMMENTED OBJECTS, THOSE WILL NEED TO BE POPULATED PROPERLY FOR CREATING/VIEWING/EDITING-->
+    <section class="section">
+        <div class="container container-standard">
+            <h1 class="title is-1">REVIEW HUNT</h1>
+            <div class="container container-standard">
+                <h2 class="title is-3">HUNT INFORMATION</h2>
+                <article class="media">
+                    <div class="media-left">
+                        <figure id="review-hunt-super-badge-image" class="image">
+                            <!--POPULATED HUNT SUPERBADGE--><img id="review-hunt-super-badge" src="assets/Magpie__Totem No.2 (Theme Stream Sculpture).png">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <!--POPULATED HUNT ABBREVIATION--><p id="review-hunt-abbreviation" class="content">
+                                ABR
+                            </p>
+                            <!--POPULATED HUNT NAME--><p id="review-hunt-name" class="content">
+                                Hunt name
+                            </p>
+                            <!--POPULATED HUNT DESCRIPTION--><p id="review-hunt-description" class="content">
+                                This hunt is very fun!!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <div class="media-right">
+                                <!--THIS WILL LEAD TO THE HUNT FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                            </div>
+                            <div class="media-right">
+                                <!--THIS WILL LEAD TO THE HUNT FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                            </div>
+                            <div class="media-right">
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="container container-standard">
+                    <h2 class="title is-3">BADGE INFORMATION</h2>
+                    <p class="content">
+                        To view information summaries and location information, click on the badge.
+                    </p>
+                    <div class="columns is-multiline">
+                        <!--POPULATED THIS IS WHERE YOU WILL APPEND ALL BADGES FOR A PARTICULAR HUNT-->
+                        <!--CRAFT UP THESE COLUMN DIVS (SAME CLASS AND ID NAMES) WITH THE PROPER DATA-->
+                        <!--EACH BADGE HAS SOME BUTTONS THOSE WILL NEED TO BE ENABLED AND DIASABLED BASED ON THE HUNT STATE-->
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge1</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge2</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge3</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+
+                        </div>
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge4</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge5</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge6</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <!--POPULATED BADGE NAME--><p id="review-hunt-badge-name" class="content">Badge7</p>
+                            <!--POPULATED BADGE IMAGE--><img id="review-hunt-badge-image" src="assets/Magpie__Centennial Sculpture.png">
+                            <div class="field is-grouped">
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-view-btn" class="button is-rounded btn-standard icon ion-md-eye"></button>
+                                <!--THIS WILL LEAD TO THE BADGE FORM PAGE--><button id="review-hunt-badge-edit-btn" class="button is-rounded btn-standard icon ion-md-create"></button>
+                                <button id="review-hunt-badge-delete-btn" class="button is-rounded btn-standard icon ion-md-trash"></button>
+                            </div>
+                        </div>
+                        <div id="add-new-badge-btn-container" class="column is-one-quarter">
+                            <!--THIS WILL HAVE TO BE ENABLED AND DISABLED BASED ON HUNT STATE--><a id="add-new-badge-btn" href="badge-form.html">+<br>ADD BADGE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-standard">
+                    <h2 class="title is-3">AWARD INFORMATION</h2>
+                    <div id="add-new-award-btn-container" class="column is-one-quarter">
+                        <!--THIS WILL HAVE TO BE ENABLED AND DISABLED BASED ON HUNT STATE--><a id="add-new-award-btn" href="award-form.html">+<br>ADD AWARD</a>
+                    </div>
+                </div>
+                <div class="container container-standard">
+                    <div class="field is-grouped">
+                        <!--UNCOMMENT THIS<button id="submit-hunt-form-approval-btn" class="button is-rounded btn-standard">SUBMIT FOR APPROVAL</button>-->
+                        <!--DELETE THIS--><a id="submit-hunt-form-approval-btn" class="button is-rounded btn-standard" href="thank-you.html">SUBMIT FOR APPROVAL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
