@@ -10,7 +10,7 @@ var config = {
 firebase.initializeApp(config);
 console.log("Firebase initialized");
 
-// check for user logged in
+// logged in state even watcher
 firebase.auth().onAuthStateChanged(function(user){
     if (user) {
         // signed in
@@ -18,7 +18,8 @@ firebase.auth().onAuthStateChanged(function(user){
     } else {
         // signed out
         console.log("user is NOT signed in");
-        console.log("REDIRECT TO LOGIN OR INDEX");
+        alert("You have been logged out of your account. Returning to login.");
+        window.location.href = "index.html";
     }
 });
 
