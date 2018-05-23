@@ -1,13 +1,7 @@
 $(document).ready(init);
 
-function init() { 
-    $("#hunt-form-save-btn").on("click", saveHuntForm); 
+function init() {
     $("hunt-form-submit-btn").on("click", submitHuntForm);
-}
-
-function saveHuntForm() { 
-    postHuntData();
-
 }
 
 function submitHuntForm() {
