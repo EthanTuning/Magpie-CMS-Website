@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyAZtHIY_mGTmr5OTsYme9s8U8-yH9bnldM",
-    authDomain: "magpie-15077.firebaseapp.com",
-    databaseURL: "https://magpie-15077.firebaseio.com",
-    projectId: "magpie-15077",
-    storageBucket: "magpie-15077.appspot.com",
-    messagingSenderId: "683045341213"
+    apiKey: "AIzaSyA7FjQrDYSP5Ew5J2BCWtEPAHD5rKYV6T8",
+    authDomain: "magpie-cms-api.firebaseapp.com",
+    databaseURL: "https://magpie-cms-api.firebaseio.com",
+    projectId: "magpie-cms-api",
+    storageBucket: "magpie-cms-api.appspot.com",
+    messagingSenderId: "859543052586"
 };
 firebase.initializeApp(config);
 console.log("Firebase initialized");
