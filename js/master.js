@@ -19,7 +19,6 @@ function getHuntStatus(huntId, token) {
         },
         error: function (e) {
             alert("Error encountered while getting the status of hunt: " + huntId);
-
         }
     });
 }
