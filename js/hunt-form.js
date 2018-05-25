@@ -1,8 +1,41 @@
 $(document).ready(init);
 
 function init() {
-    $("#hunt-form-submit-btn").click(submitHuntForm);
+    $("#hunt-form-submit-btn").click(submitHuntForm);		// Submit a hunt
+    $("#hunt-form-back-btn").click(goBack);					// go back
+    
+    // if GET parameters passed, load the page with an AJAX call.
+    var huntID = findGetParameter('huntID');
+    
+    if (huntID != null)
+    {
+		populateHuntForm(huntID);
+	}
 }
+
+
+// How to retrieve get parameters
+//https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+
+// Replicate the browser's back button
+function goBack()
+{
+	window.history.back();
+}
+
 
 function submitHuntForm() {
     postHuntData();		// the boolean returned determines if the page moves on or not
@@ -17,7 +50,7 @@ function populateHuntForm(huntID) {
 
 
 /**
- * ajax call for getting an already existing Hunt
+ * Get an existing Hunt and populate the web page.
  * 
  * Takes a hunt_id number.
  */
@@ -66,7 +99,7 @@ function getHuntData(huntID) {
 
 
 /**
- * ajax call for creation of new hunt
+ * Submit a Hunt for creation
  */
 function postHuntData() {
     
