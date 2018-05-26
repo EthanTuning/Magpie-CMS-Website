@@ -15,7 +15,8 @@ firebase.auth().onAuthStateChanged(function(user){
     if (user) {
         // signed in
         console.log("user is signed in");
-        getToken();
+        getToken();										// put the user's token in localStorage
+        localStorage.setItem("email", user.email);		// put the user's email in localStorage
     } else {
         // signed out
         console.log("user is NOT signed in");
@@ -27,7 +28,7 @@ firebase.auth().onAuthStateChanged(function(user){
 function getToken() {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ false).then(function (idToken) {
         console.log("token: " + idToken);
-        localStorage.setItem("token", idToken);		//to get token: var token = localStorage.getItem("token");
+        localStorage.setItem("token", idToken);			//to get token: var token = localStorage.getItem("token");
     }).catch(function (error) {
         console.log("failed to get token");
         console.log(error);
