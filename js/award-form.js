@@ -13,7 +13,7 @@ function submitHuntForm(evt) {
     evt.preventDefault();
     var token = localStorage.getItem("token");
 
-
+    alert("here");
 
     if (token == null) {
         alert("token is null");
@@ -37,7 +37,7 @@ function submitHuntForm(evt) {
         form.append("redeem_code", "no redeem code");
         form.append("award_value", award_value);
 
-        sendForm(form);
+        sendForm(form, token);
     }
     else {
         alert("You entered bad information");
@@ -58,7 +58,7 @@ function isApprovedData(name, has_value, address, lat, lon, terms) {
 /*
  * Send the form data to the API
  */
-function sendForm(form) {
+function sendForm(form, token) {
     var settings = {
         "async": true,
         "crossDomain": true,
