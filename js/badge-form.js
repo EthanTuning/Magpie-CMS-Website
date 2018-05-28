@@ -56,7 +56,7 @@ function getTok() {
 }
 
 function populateFields(badgeData) {
-    /*populates: badge name, description, location*/
+    /*populates: badge name, description, location. will need to hide last 3 fields*/
     $("#badge-name").val(badgeData.name);
     $("#badge-description").val(badgeData.landmark_name);
     $("#badge-latitude").val(badgeData.lat);
