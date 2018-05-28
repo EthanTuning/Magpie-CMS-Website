@@ -23,6 +23,28 @@ function getHuntStatus(huntId, token) {
     });
 }
 
+/*Get a hunt. used by badge-form.html.
+* Is only called when the hunt status is 'submitted' */
+function getHunt(huntId, token) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: "https://magpiehunt.com/api/v1/hunts/" + huntId,
+        dataType: "text",
+        timeout: 600000,
+        "headers": {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (data) {
+            var hunt = JSON.parse(data);
+            return hunt;
+        },
+        error: function (e) {
+            alert("Error encountered while getting the status of hunt: " + huntId);
+        }
+    });
+}
+
 
 // gets the params from URL
 // example console.log(getUrlVars()["huntID"]);
