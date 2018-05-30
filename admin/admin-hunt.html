@@ -28,8 +28,54 @@
     </nav>
     <section class="section">
         <div class="container">
-            <h1 class="title is-1">BADGES</h1>
-            <!--POPULATED HUNT NAME--><h2 class="title is-3">Hunt1</h2>
+            <h1 class="title is-1">HUNT INFO</h1>
+            <!--POPULATED HUNT NAME--><h2 class="title is-2 admin-h2">Hunt1</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th><abbr title="Email"></abbr>Owner Email</th>
+                        <th><abbr title="Name">Name</abbr></th>
+                        <th><abbr title="Abbreviation">Abbreviation</abbr></th>
+                        <th><abbr title="Summary"></abbr>Summary</th>
+                        <th><abbr title="City"></abbr>City</th>
+                        <th><abbr title="State"></abbr>State</th>
+                        <th><abbr title="ZIP"></abbr>ZIP</th>
+                        <th><abbr title="Start"></abbr>Start</th>
+                        <th><abbr title="End"></abbr>End</th>
+                        <th><abbr title="Super Badge"></abbr>Super Badge</th>
+                        <th><abbr title="Badge Order"></abbr>Badge Order</th>
+                        <th><abbr title="Audience"></abbr>Audience</th>
+                        <th><abbr title="Sponsor"></abbr>Sponsor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--POPULATED GET ALL HUNT DATA OF ALL "UNDER REVIEW" HUNTS-->
+                    <tr>
+                        <td>bobthebuilder@bobbuilds.com</td>
+                        <td>Hunt1</td>
+                        <td>h1</td>
+                        <td>Very fun hunt!</td>
+                        <td>Spokane</td>
+                        <td>WA</td>
+                        <td>99205</td>
+                        <td>01/01/2018</td>
+                        <td>01/01/2018</td>
+                        <td>http://image-url</td>
+                        <td>YES</td>
+                        <td>Mature</td>
+                        <td>EWU</td>
+                    </tr>
+                </tbody>
+            </table>
+            <center>
+                <a class="button is-rounded btn-standard icon ion-md-checkmark admin-btn"></a>
+                <a class="button is-rounded btn-standard icon icon ion-md-trash admin-btn"></a>
+            </center>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-3">BADGES</h1>
             <table class="table is-fullwidth">
                 <thead>
                     <tr>
@@ -100,7 +146,32 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="button btn-standard is-rounded" href="admin-hunts.html">BACK</a>
+        </div>
+    </section>
+    <section class="section">
+        <h1 class="title is-3">AWARD</h1>
+        <div class="container">
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th><abbr title="Name"></abbr>Name</th>
+                        <th><abbr title="Value">Value</abbr></th>
+                        <th><abbr title="Latitude">Latitude</abbr></th>
+                        <th><abbr title="Longitude">Longitude</abbr></th>
+                        <th><abbr title="Terms"></abbr>Terms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Free Coffee</td>
+                        <td>$300,000.00</td>
+                        <td>1</td>
+                        <td>-1</td>
+                        <td>BLAHHHH</td>
+                    </tr>
+                </tbody>
+            </table>
+            <center><a class="button btn-standard is-rounded admin-back-btn" href="admin-hunts.html">BACK</a></center>
         </div>
     </section>
 </body>
