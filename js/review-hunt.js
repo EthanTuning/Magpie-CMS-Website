@@ -181,9 +181,6 @@ $.ajax(awardSettings).done(function (response) {
 
         // remove edit award box since hunt is under review
         document.getElementById("add-new-award-btn-container").remove();
-
-        // remove hunt submission button
-        document.getElementById("submit-hunt-form-approval-btn").remove();
     }
 });
 
@@ -213,6 +210,13 @@ function delAwardButton(awardID) {
 ////////////////////////////
 // submit hunt for review //
 ////////////////////////////
+$(document).ready(function(){
+    if (!isEditable) {
+        // remove hunt submission button
+        document.getElementById("submit-hunt-form-approval-btn").remove();
+    }
+});
+
 function submitHuntForReview() {
     var submitSettings = {
         "async": true,
