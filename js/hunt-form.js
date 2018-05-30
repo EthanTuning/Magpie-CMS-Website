@@ -1,17 +1,23 @@
+
+var huntID;
+
 $(document).ready(init);
+
+
 
 function init() {
     $("#hunt-form-submit-btn").click(submitHuntForm);		// Submit a hunt
     $("#hunt-form-back-btn").click(goBack);					// go back
-    
+        
     // if GET parameters passed, load the page with an AJAX call.
-    var huntID = findGetParameter('huntID');
+    huntID = findGetParameter('huntID');
     
     if (huntID != null)
     {
 		populateHuntForm(huntID);
 	}
 }
+
 
 
 // How to retrieve get parameters
@@ -80,6 +86,12 @@ function getHuntData(huntID) {
 		console.log(response);
 		
 		var hunt = JSON.parse(response).data;
+
+		// disable input fields if the Hunt is anything other than non-approved
+		if (hunt.approval_status != "non-approved")
+		{
+			$(".input").prop('disabled', true);
+		}
 		
 		$("#hunt-name").val(hunt.name);
 		$("#hunt-abbreviation").val(hunt.abbreviation);
@@ -129,12 +141,19 @@ function postHuntData() {
 
 	console.log(form);
 
-	// send to server
+	// add on the /hunt_id if it exists
+	var huntExt = "";
+	
+	if (huntID != null)
+	{
+		huntExt = "/" + huntID;
+		
+	}
 
 	var settings = {
 	  "async": true,
 	  "crossDomain": true,
-	  "url": "https://magpiehunt.com/api/v1/hunts",
+	  "url": "https://magpiehunt.com/api/v1/hunts" + huntExt,
 	  "method": "POST",
 	  "headers": {
 		  "Authorization" : "Bearer " + token
