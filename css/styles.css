@@ -353,3 +353,16 @@ p {
 #thank-you-view-hunts-btn {
     margin-top: 2em;
 }
+
+/******** Admin ********/
+
+.admin-h2 {
+    text-align: center;
+}
+
+.admin-btn {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-right: 1em;
+    padding-left: 1em;
+}
