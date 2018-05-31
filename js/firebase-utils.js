@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(function(user){
 
 function getToken() {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ false).then(function (idToken) {
-        console.log("token: " + idToken);
+        //console.log("token: " + idToken);
         localStorage.setItem("token", idToken);			//to get token: var token = localStorage.getItem("token");
     }).catch(function (error) {
         console.log("failed to get token");

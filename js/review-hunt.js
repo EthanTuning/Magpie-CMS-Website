@@ -45,7 +45,14 @@ $.ajax(huntSettings).done(function (response) {
     document.getElementById("review-hunt-abbreviation").innerText = huntJSON["data"]["abbreviation"];
     document.getElementById("review-hunt-name").innerText = huntJSON["data"]["name"];
     document.getElementById("review-hunt-description").innerText = huntJSON["data"]["summary"];
-
+    
+    // set the superbadge
+    var superbadge = huntJSON["data"]["super_badge"]["href"];
+    if (superbadge != "")
+    {
+		$("#review-hunt-super-badge").attr("src", huntJSON["data"]["super_badge"]["href"]);
+	}
+	
     // set hunt links
     document.getElementById("review-hunt-super-badge-image-link").href = "hunt-form.html?huntID=" + getUrlVars()["huntID"];
     document.getElementById("review-hunt-badge-view-btn").href = "hunt-form.html?huntID=" + getUrlVars()["huntID"];
@@ -76,7 +83,7 @@ $.ajax(badgeSettings).done(function (response) {
 
         // create current badge html w/ delete button
         var badgeHTML = "<div class=\"column is-one-quarter\">\r\n" +
-            "<p id=\"review-hunt-badge-name\" class=\"content\">" + badgesJSON[i]["data"]["landmark_name"] + "<\/p>\r\n" +
+            "<p id=\"review-hunt-badge-name\" class=\"content\">" + badgesJSON[i]["data"]["name"] + "<\/p>\r\n" +
             "<a href=\"badge-form.html?huntID=" + getUrlVars()["huntID"] + "&badgeID=" + badgesJSON[i]["data"]["badge_id"] + "\">\r\n" +
             "<img id=\"review-hunt-badge-image\" src=\"" + badgesJSON[i]["data"]["icon"]["href"] + "\">\r\n" +
             "</a>\r\n" +

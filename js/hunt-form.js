@@ -83,7 +83,7 @@ function getHuntData(huntID) {
 	}
 
 	$.ajax(settings).done(function (response) {
-		console.log(response);
+		//console.log(response);
 		
 		var hunt = JSON.parse(response).data;
 
@@ -165,9 +165,6 @@ function postHuntData() {
 	  "method": "POST",
 	  "headers": {
 		  "Authorization" : "Bearer " + token
-		},
-		"success": function(data){
-			console.log(data);
 		},
 		"statusCode": {
 			404: function() {

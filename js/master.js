@@ -13,7 +13,7 @@ function getHuntStatus(huntId, token) {
         success: function (data) {
             var temp = JSON.parse(data);
             var status = temp["data"]["approval_status"];
-            console.log(temp["data"]["approval_status"]);
+            //console.log(temp["data"]["approval_status"]);
             return status;
 
         },
