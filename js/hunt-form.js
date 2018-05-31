@@ -116,6 +116,14 @@ function getHuntData(huntID) {
  */
 function postHuntData() {
     
+    //if the page is locked for editing don't do an API call, just go to the next page
+    if ($("#hunt-name").prop('disabled') == true)
+    {
+		var nextPage = 'review-hunt.html?huntID=' + huntID;
+		window.location.replace(nextPage);
+	}
+    
+    // otherwise,
     // get the token and add it to the ajax call
 	var token = localStorage.getItem("token");
 	
@@ -134,7 +142,7 @@ function postHuntData() {
 	form.append("date_start", $("#hunt-start-date").val());
 	form.append("summary", $("#hunt-description").val());
 	form.append("sponsor", $("#hunt-sponsor").val());
-	form.append("super_badge", $("#hunt-super-badge").val());
+	form.append("super_badge", "assets/super_badge/Magpie__Mountain%20Sheep.png"); //$("#hunt-super-badge").val());
 	form.append("city", $("#hunt-city").val());
 	form.append("state", $("#hunt-state").val());
 	form.append("zipcode", $("#hunt-zip").val());
@@ -160,9 +168,6 @@ function postHuntData() {
 		},
 		"success": function(data){
 			console.log(data);
-		},
-		"error" : function(data){
-			return false;
 		},
 		"statusCode": {
 			404: function() {

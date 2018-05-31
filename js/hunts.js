@@ -1,13 +1,12 @@
+/* javascript */
 
 $(document).ready(init);
 
 
-
-function init() {
-    
+function init()
+{
     getHunts();
 }
-
 
 
 /**
@@ -39,22 +38,91 @@ function getHunts() {
 		
 		var hunts = JSON.parse(response);
 
-		// for each hunt in list, make a tile
+		// for each hunt in list, make a tile and add it
 		for( let hunt of hunts)
 		{
-			console.log(hunt);		// $().val(hunt.data.name), $("#hunt-super-badge").val(hunt.super_badge);
+			addTile(hunt);
 		}
 		
-		// set the onclick() for super_badge so it goes to that Hunt's page (review-hunt)
-		
-		$("#divNonApproved").val(hunt.name);
-		$("#divSubmitted").val(hunt.abbreviation);
-		$("#divApproved").val(hunt.zipcode);
-		
+		// add the "Create Hunt" tile
+		var createHunt = $("<div/>", {
+		  id: "add-new-hunt-btn-container",
+		  "class": "column is-one-quarter",      // ('class' is still better in quotes
+		});
+		createHunt.append('<a id="add-new-hunt-btn" href="hunt-form.html">+<br>CREATE HUNT</a>');
+		$('#divNonApproved').append(createHunt);
+			
 	});
 	
 	
 }
 
 
+/** Add a tile to the Tile area(s) **/
+function addTile(hunt)
+{
+	huntID = hunt.data.hunt_id;
+	
+	var tile = $("<div/>", {
+
+		  // PROPERTIES HERE
+		  
+		  //text: "Click me",
+		  id: huntID,
+		  "class": "column is-one-quarter",      // ('class' is still better in quotes)
+		  on: {
+			click: function() {
+			  //window.location='./review-hunt.html?huntID='+huntID;
+			}
+		  }		  
+		}); // << no need to do anything here as we defined the properties internally.
+		
+	tile.append("<p id='hunts-hunt-name' class='content'>" + hunt.data.name + "</p>");
+	
+	//make a <a> for the image to have a link
+	var linkWrapper = $("<a/>", {href: './review-hunt.html?huntID='+huntID});	//wraps the tile with a link, valid as of HTML5
+
+	// if there is no super badge use a placeholder
+	if (hunt.data.super_badge.href == "")
+	{
+		hunt.data.super_badge.href = 'assets/super_badge/SSW_Badges&MapPins-69.png';
+	}
+	
+	//attach image to linkWrapper
+	linkWrapper.append($('<img>',{id:'theImg',src: hunt.data.super_badge.href }));
+	
+	// attach linkWrapper to tile
+	tile.append(linkWrapper);
+	
+	// add tile to the holding <div>
+	var divString = getStatusDiv(hunt);
+	$(divString).append(tile);
+	
 }
+
+
+
+/** Takes a hunt, returns the <div> id to attach to **/
+function getStatusDiv(hunt)
+{
+	var status = hunt.data.approval_status;	//hunt's approval_status
+	var divID;		// the <div> to attach to
+	
+	if (status == "non-approved")
+	{
+		divID = "#divNonApproved";
+	}
+	else if (status == "submitted")
+	{
+		divID = "#divSubmitted";
+	}
+	else
+	{
+		//approved
+		divID = "#divApproved";
+	}
+	
+	return divID;
+}
+
+

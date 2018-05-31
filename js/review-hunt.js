@@ -47,9 +47,9 @@ $.ajax(huntSettings).done(function (response) {
     document.getElementById("review-hunt-description").innerText = huntJSON["data"]["summary"];
 
     // set hunt links
-    document.getElementById("review-hunt-super-badge-image-link").href = "hunt-form.html?badgeID=" + getUrlVars()["huntID"];
-    document.getElementById("review-hunt-badge-view-btn").href = "hunt-form.html?badgeID=" + getUrlVars()["huntID"];
-    document.getElementById("review-hunt-badge-edit-btn").href = "hunt-form.html?badgeID=" + getUrlVars()["huntID"];
+    document.getElementById("review-hunt-super-badge-image-link").href = "hunt-form.html?huntID=" + getUrlVars()["huntID"];
+    document.getElementById("review-hunt-badge-view-btn").href = "hunt-form.html?huntID=" + getUrlVars()["huntID"];
+    document.getElementById("review-hunt-badge-edit-btn").href = "hunt-form.html?huntID=" + getUrlVars()["huntID"];
     // delete is removed from this page and will be on hunts.html page
 });
 
