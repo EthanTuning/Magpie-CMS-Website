@@ -232,7 +232,7 @@ function submitHuntForReview() {
         "method": "PATCH",
         "headers": {
             "Authorization": "Bearer " + localStorage.getItem("token"),
-            "Cache-Control": "no-cache",
+            "Cache-Control": "no-cache"
         }
     };
     $.ajax(submitSettings).done(function (response) {
