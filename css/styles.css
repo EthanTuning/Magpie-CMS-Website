@@ -366,3 +366,57 @@ p {
     padding-right: 1em;
     padding-left: 1em;
 }
+
+/******** Pricing ********/
+
+#pricing-info-text-container {
+    text-align: center;
+}
+
+#pricing-info-text-container h2 {
+    font-size: 1.27em;
+}
+
+.price-column-head {
+    width: 100%;
+    height: 30em;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.14);
+}
+
+.price-column-head h2,
+.price-column-head h3 {
+    color: white;
+}
+
+#free-price-column-head {
+    background: #d8d8d8;
+}
+
+#bronze-price-column-head {
+    background: #52D291;
+}
+
+#silver-price-column-head {
+    background: #49BEC1;
+}
+
+#gold-price-column-head {
+    background: #40AAF2;
+}
+
+.price-column {
+    margin-top: 4em;
+    padding: 0;
+    text-align: center;
+    height: 30em;
+}
+
+.pricing-info {
+    background: white;
+    height: 20em;
+}
+
+#pricing-price {
+    position: relative;
+    bottom: .75em;
+}
