@@ -29,7 +29,8 @@ function getHunts() {
 		"url": "https://magpiehunt.com/api/v1/hunts",
 		"method": "GET",
 		"headers": {
-		  "Authorization" : "Bearer " + token
+		  "Authorization" : "Bearer " + token,
+		  "Cache-Control": "no-cache"
 		}
 	}
 
@@ -83,13 +84,22 @@ function addTile(hunt)
 	var linkWrapper = $("<a/>", {href: './review-hunt.html?huntID='+huntID});	//wraps the tile with a link, valid as of HTML5
 
 	// if there is no super badge use a placeholder
-	if (hunt.data.super_badge.href == "")
+	var superBadgeImage;
+	try
 	{
-		hunt.data.super_badge.href = 'assets/super_badge/SSW_Badges&MapPins-69.png';
+		superBadgeImage = hunt.data.super_badge.href;
+		if (superBadgeImage == "")
+		{
+			throw new Exception();
+		}
+	}
+	catch (error)
+	{
+		superBadgeImage = 'assets/super_badge/SSW_Badges&MapPins-69.png';
 	}
 	
 	//attach image to linkWrapper
-	linkWrapper.append($('<img>',{id:'theImg',src: hunt.data.super_badge.href }));
+	linkWrapper.append($('<img>',{id:'theImg',src: superBadgeImage }));
 	
 	// attach linkWrapper to tile
 	tile.append(linkWrapper);

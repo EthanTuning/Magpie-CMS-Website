@@ -100,10 +100,18 @@ function getHuntData(huntID) {
 		$("#hunt-start-date").val(hunt.date_start);
 		$("#hunt-description").val(hunt.summary);
 		$("#hunt-sponsor").val(hunt.sponsor);
-		//$("#hunt-super-badge").val(hunt.super_badge);
 		$("#hunt-city").val(hunt.city);
 		$("#hunt-state").val(hunt.state);
 		$("#hunt-zip").val(hunt.zipcode);
+
+		// add image to page
+		$("#hunt-super-badge").parent().prepend($("<img>", {
+				src : hunt.super_badge.href,
+				height : 300,
+				width : 300
+				}
+		));
+		
 		
 	});
 	
@@ -142,12 +150,17 @@ function postHuntData() {
 	form.append("date_start", $("#hunt-start-date").val());
 	form.append("summary", $("#hunt-description").val());
 	form.append("sponsor", $("#hunt-sponsor").val());
-	form.append("super_badge", "assets/super_badge/Magpie__Mountain%20Sheep.png"); //$("#hunt-super-badge").val());
 	form.append("city", $("#hunt-city").val());
 	form.append("state", $("#hunt-state").val());
 	form.append("zipcode", $("#hunt-zip").val());
 
-	console.log(form);
+	//superbadge stuff
+	//form.append("super_badge", $("#hunt-super-badge")[0].prop("files")[0] );
+	var file = document.getElementById("hunt-super-badge").files[0];
+	console.log(file);
+	form.append("super_badge", file);
+
+	//console.log(form);
 
 	// add on the /hunt_id if it exists
 	var huntExt = "";
