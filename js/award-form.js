@@ -201,3 +201,32 @@ function postaward()
 	});
 }
 
+function initMap() {
+    var lat = document.getElementById("award-latitude").value;
+    var lon = document.getElementById("award-longitude").value;
+
+    if(lat == null || lon == null || lat == "" || lon == "") {
+        //EWU coordinates used as default
+        lat = 47.4906;
+        lon = -117.5855;
+    }
+
+    console.log("lat is " + lat + " long is " + lon);
+    var myLatLng = {lat: parseFloat(lat), lng: parseFloat(lon)};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        draggable: true,
+        title: 'Hello World!'
+    });
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+        document.getElementById("award-latitude").value = this.getPosition().lat();
+        document.getElementById("award-longitude").value = this.getPosition().lng();
+    })
+}
