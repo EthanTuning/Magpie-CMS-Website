@@ -1,5 +1,10 @@
 /* javascript */
 
+
+/* NOTE: The delete button functionality relies on a 'deleteButton.css' file in the css/ folder
+ */
+
+
 $(document).ready(init);
 
 
@@ -55,7 +60,6 @@ function getHunts() {
 			
 	});
 	
-	
 }
 
 
@@ -67,8 +71,6 @@ function addTile(hunt)
 	var tile = $("<div/>", {
 
 		  // PROPERTIES HERE
-		  
-		  //text: "Click me",
 		  id: huntID,
 		  "class": "column is-one-quarter",      // ('class' is still better in quotes)
 		  on: {
@@ -80,9 +82,13 @@ function addTile(hunt)
 		
 	tile.append("<p id='hunts-hunt-name' class='content'>" + hunt.data.name + "</p>");
 	
+	// div to wrap the <button>, <a> and <img>
+	var div = $("<div>", {"class" : "show-delete-button"});
+	
 	//make a <a> for the image to have a link
 	var linkWrapper = $("<a/>", {href: './review-hunt.html?huntID='+huntID});	//wraps the tile with a link, valid as of HTML5
-
+	
+	// generate the <img>
 	// if there is no super badge use a placeholder
 	var superBadgeImage;
 	try
@@ -98,11 +104,28 @@ function addTile(hunt)
 		superBadgeImage = 'assets/super_badge/SSW_Badges&MapPins-69.png';
 	}
 	
-	//attach image to linkWrapper
-	linkWrapper.append($('<img>',{id:'theImg',src: superBadgeImage }));
+	//image
+	var image = $('<img>',{id:'hunts-hunt-super-badge-icon',src: superBadgeImage });
 	
-	// attach linkWrapper to tile
-	tile.append(linkWrapper);
+	// delete button
+	var button = $("<button>", {
+		"id" : "review-hunt-badge-delete-btn",
+		"class": "button is-rounded btn-standard icon ion-md-trash",
+		"data" : {
+			"huntID" : huntID
+		},
+		on: {
+				click: deleteHunt
+		}
+	});
+	
+	linkWrapper.append(image);	// add <img> to <a>
+	
+	div.append(button);			// add button to div
+	div.append(linkWrapper);	// add <a> to div
+	
+	// attach the div to tile
+	tile.append(div);
 	
 	// add tile to the holding <div>
 	var divString = getStatusDiv(hunt);
@@ -110,6 +133,57 @@ function addTile(hunt)
 	
 }
 
+
+/*** DELTE A HUNT *****/
+function deleteHunt(event)
+{
+	var bool = confirm("Are you sure you want to delete this Hunt?");
+	
+	if (!bool)
+	{
+		return false;
+	}
+	
+	var token = localStorage.getItem("token");
+	
+	if (token == null)
+	{
+		alert("token is null");
+	}
+
+	//add on the huntID
+	var huntID = $(event.target).data("huntID");
+
+	var settings = {
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "https://magpiehunt.com/api/v1/hunts/" + huntID,
+	  "method": "DELETE",
+	  "headers": {
+		  "Authorization" : "Bearer " + token
+		},
+		"statusCode": {
+			404: function() {
+				alert('Hunt not found!');
+			},
+			400: function() {
+				alert('Bad request!');
+			},
+			500: function() {
+				alert('Something is wrong!');
+			}
+	   },
+	  "processData": false,
+	  "contentType": false,
+	};
+
+	$.ajax(settings).done(function (response) {
+	  console.log(response);
+	  //refresh the page
+	  window.location.reload();
+	});
+
+}
 
 
 /** Takes a hunt, returns the <div> id to attach to **/
