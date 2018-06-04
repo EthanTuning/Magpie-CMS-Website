@@ -8,7 +8,7 @@ $(document).ready(init);
 function init() {
     $("#hunt-form-submit-btn").click(submitHuntForm);		// Submit a hunt
     $("#hunt-form-back-btn").click(goBack);					// go back
-        
+    $("#hunt-super-badge").change(superbadgePreview);
     // if GET parameters passed, load the page with an AJAX call.
     huntID = findGetParameter('huntID');
     
@@ -90,12 +90,13 @@ function getHuntData(huntID) {
 		// disable input fields if the Hunt is anything other than non-approved
 		if (hunt.approval_status != "non-approved")
 		{
-			$(".input").prop('disabled', true);
+			$("input").prop('disabled', true);
+			$("textarea").prop('disabled', true);
 		}
 		
 		$("#hunt-name").val(hunt.name);
 		$("#hunt-abbreviation").val(hunt.abbreviation);
-		//form.append("audience", "string");
+		$("input[name=audience][value=" + hunt.audience + "]").prop('checked', true);
 		$("#hunt-end-date").val(hunt.date_end);
 		$("#hunt-start-date").val(hunt.date_start);
 		$("#hunt-description").val(hunt.summary);
@@ -103,19 +104,30 @@ function getHuntData(huntID) {
 		$("#hunt-city").val(hunt.city);
 		$("#hunt-state").val(hunt.state);
 		$("#hunt-zip").val(hunt.zipcode);
-
-		// add image to page
+		
+		// for superbadge, use session storage to store the image URL.
+		// this gets sent back to the database in place of an image, if no image is selected.
+		sessionStorage.setItem('superbadgeURL', hunt.super_badge.href);
+		
+		// add superbadge preview to page
 		$("#hunt-super-badge").parent().prepend($("<img>", {
+				id : "super-badge-image",
 				src : hunt.super_badge.href,
 				height : 300,
 				width : 300
 				}
 		));
 		
-		
 	});
 	
-	
+}
+
+
+// Change the superbadge preview icon when selecting a new image
+function superbadgePreview(event)
+{
+	var output = document.getElementById('super-badge-image');
+    output.src = URL.createObjectURL(event.target.files[0]);
 }
 
 
@@ -145,7 +157,7 @@ function postHuntData() {
 	
 	form.append("name", $("#hunt-name").val());
 	form.append("abbreviation", $("#hunt-abbreviation").val());
-	//form.append("audience", "string");
+	form.append("audience", $('#hunt-audience input[type=radio]:checked').val());
 	form.append("date_end", $("#hunt-end-date").val());
 	form.append("date_start", $("#hunt-start-date").val());
 	form.append("summary", $("#hunt-description").val());
@@ -155,10 +167,17 @@ function postHuntData() {
 	form.append("zipcode", $("#hunt-zip").val());
 
 	//superbadge stuff
-	//form.append("super_badge", $("#hunt-super-badge")[0].prop("files")[0] );
 	var file = document.getElementById("hunt-super-badge").files[0];
-	console.log(file);
-	form.append("super_badge", file);
+	
+	if (file != null)
+	{
+		form.append("super_badge", file);
+	}
+	else
+	{
+		var sburl = sessionStorage.getItem('superbadgeURL');
+		form.append("super_badge", sburl);
+	}
 
 	//console.log(form);
 
@@ -181,12 +200,14 @@ function postHuntData() {
 		},
 		"statusCode": {
 			404: function() {
-			  alert('Hunt not found!');
+				alert('Hunt not found!');
 			},
-
 			400: function() {
-			   alert('bad request!');
-		   }
+				alert('Bad request!');
+			},
+			500: function() {
+				alert('Nothing changed!');
+			}
 	   },
 	  "processData": false,
 	  "contentType": false,
