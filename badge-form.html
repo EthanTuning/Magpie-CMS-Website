@@ -66,6 +66,46 @@
                         <input id="badge-latitude" class="input" type="number" placeholder="latitude"></input>
                         <input id="badge-longitude" class="input" type="number" placeholder="longitude"></input>
                     </div>
+                    <div>
+                        <button id="dropPin" onclick="initMap()">Drop Pin</button>
+                    </div>
+                    <br>
+                    <div id="map" style="height: 400px; width:400px;"></div>
+                    <script>
+
+                        function initMap() {
+                            var lat = document.getElementById("badge-latitude").value;
+                            var lon = document.getElementById("badge-longitude").value;
+
+                            if(lat == null || lon == null || lat == "" || lon == "") {
+                                //EWU coordinates used as default
+                                lat = 47.4906;
+                                lon = -117.5855;
+                            }
+
+                            console.log("lat is " + lat + " long is " + lon);
+                            var myLatLng = {lat: parseFloat(lat), lng: parseFloat(lon)};
+
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 16,
+                                center: myLatLng
+                            });
+
+                            var marker = new google.maps.Marker({
+                                position: myLatLng,
+                                map: map,
+                                draggable: true,
+                                title: 'Hello World!'
+                            });
+                            google.maps.event.addListener(marker, 'dragend', function(event) {
+                                document.getElementById("badge-latitude").value = this.getPosition().lat();
+                                document.getElementById("badge-longitude").value = this.getPosition().lng();
+                            })
+                        }
+
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE8F0Y26uHzD91o8hqoOiQyZ7ZJyJDHy8&amp;callback=initMap"></script>
+
                 </div>
                 <h2 class="title is-3">QR CODE</h2>
                 <p class="content">
