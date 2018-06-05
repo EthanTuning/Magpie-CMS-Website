@@ -92,7 +92,7 @@ function populateFields(awardData) {
     $("#award-location-name").val(awardData.address);
     $("#award-latitude").val(awardData.lat);
     $("#award-longitude").val(awardData.lon);
-    $("#award-terms-and-conditions").val(awardData.description);
+    $("#award-terms").val(awardData.description);
 }
 
 
@@ -143,7 +143,7 @@ function postaward()
 	form.append("name", $("#award-name").val());
 	form.append("award_value", $("#award-value").val());
 	form.append("address", $("#award-location-name").val());
-	form.append("description", $("#award-terms-and-conditions").val());
+	form.append("description", $("#award-terms").val());
 	form.append("lat", $("#award-latitude").val());
 	form.append("lon", $("#award-longitude").val());
 
