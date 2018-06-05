@@ -2,9 +2,11 @@
 
 $(document).ready(init);
 
-var _token;// = getTok();
-var _huntId;// = getUrlVars()["huntID"];
-var _awardId;// = getUrlVars()["awardID"];
+var _token;
+var _huntId;
+var _awardId;
+var _marker;		// google maps marker
+
 
 function init() {
     lockQRButtons();
@@ -21,6 +23,7 @@ function init() {
 		setawardData();
 	}
 	
+	$("#btn-location").click(getCurrentLocation);
 	$("#award-form-back-btn").click(goBack);
 	$("#award-form-save-btn").click(foo);
 }
@@ -39,11 +42,6 @@ function goBack()
 	return false;
 }
 
-
-/*sets the award-form to read only*/
-function setToReadOnly() {
-    
-}
 
 function huntStatus() {
 
@@ -70,18 +68,6 @@ function huntStatus() {
         }
     });
 }
-
-/*
-function setFields(status) {
-    if (status == "submitted") {
-        //populate & set to read only
-        setawardData();
-        setToReadOnly();
-    } else if(status == "published"){
-        setToReadOnly();
-    }
-}
-*/
 
 
 /*lock the QR code radio buttons*/
@@ -214,19 +200,43 @@ function initMap() {
     console.log("lat is " + lat + " long is " + lon);
     var myLatLng = {lat: parseFloat(lat), lng: parseFloat(lon)};
 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: myLatLng
     });
 
-    var marker = new google.maps.Marker({
+    _marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
         draggable: true,
         title: 'Hello World!'
     });
-    google.maps.event.addListener(marker, 'dragend', function(event) {
+    google.maps.event.addListener(_marker, 'dragend', function(event) {
         document.getElementById("award-latitude").value = this.getPosition().lat();
         document.getElementById("award-longitude").value = this.getPosition().lng();
     })
 }
+
+
+//gets the current location from the browser (should work in FF/Chrome, only tested in Chrome)
+function getCurrentLocation()
+{
+	navigator.geolocation.getCurrentPosition(setLatLong);
+	return false;
+}
+
+
+//call function for getCurrentLocation()
+function setLatLong(position)
+{
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	
+	$("#award-latitude").val(lat);
+    $("#award-longitude").val(lon);
+    
+    _marker.setPosition( new google.maps.LatLng( lat,lon ) );
+    map.panTo( new google.maps.LatLng( lat,lon ) );
+}
+
+

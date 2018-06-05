@@ -36,7 +36,8 @@ function getHunts() {
 		"headers": {
 		  "Authorization" : "Bearer " + token,
 		  "Cache-Control": "no-cache"
-		}
+		},
+		"error" : createAddHuntButton
 	}
 
 	$.ajax(settings).done(function (response) {
@@ -50,17 +51,27 @@ function getHunts() {
 			addTile(hunt);
 		}
 		
-		// add the "Create Hunt" tile
+		createAddHuntButton();
+			
+	});
+	
+}
+
+
+
+//kinda hacky
+function createAddHuntButton()
+{
+	// add the "Create Hunt" tile
 		var createHunt = $("<div/>", {
 		  id: "add-new-hunt-btn-container",
 		  "class": "column is-one-quarter",      // ('class' is still better in quotes
 		});
 		createHunt.append('<a id="add-new-hunt-btn" href="hunt-form.html">+<br>CREATE HUNT</a>');
 		$('#divNonApproved').append(createHunt);
-			
-	});
-	
 }
+
+
 
 
 /** Add a tile to the Tile area(s) **/
@@ -134,7 +145,7 @@ function addTile(hunt)
 }
 
 
-/*** DELTE A HUNT *****/
+/*** DELETE A HUNT *****/
 function deleteHunt(event)
 {
 	var bool = confirm("Are you sure you want to delete this Hunt?");
