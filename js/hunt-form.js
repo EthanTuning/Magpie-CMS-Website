@@ -91,7 +91,8 @@ function getHuntData(huntID) {
 		"method": "GET",
 		"headers": {
 		  "Authorization" : "Bearer " + token
-		}
+		},
+		"error" : function (e) {alert(e.responseText);}
 	}
 
 	$.ajax(settings).done(function (response) {
@@ -219,14 +220,14 @@ function postHuntData() {
 		  "Authorization" : "Bearer " + token
 		},
 		"statusCode": {
-			404: function() {
-				alert('Hunt not found!');
+			404: function(e) {
+				alert(e.responseText);
 			},
-			400: function() {
-				alert('Bad request!');
+			400: function(e) {
+				alert(e.responseText);
 			},
-			500: function() {
-				alert('Nothing changed!');
+			500: function(e) {
+				alert(e.responseText);
 			}
 	   },
 	  "processData": false,

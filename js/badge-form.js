@@ -217,12 +217,15 @@ function postBadge()
 		  "Authorization" : "Bearer " + token
 		},
 		"statusCode": {
-			404: function() {
-			  alert('Badge not found!');
+			404: function(e) {
+			  alert(e.responseText);
 			},
 
-			400: function() {
-			   alert('bad request!');
+			400: function(e) {
+			   alert(e.responseText);
+		   },
+		   500: function(e) {
+			   alert(e.responseText);
 		   }
 	   },
 	  "processData": false,
