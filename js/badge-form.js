@@ -2,9 +2,11 @@
 
 $(document).ready(init);
 
-var _token;// = getTok();
-var _huntId;// = getUrlVars()["huntID"];
-var _badgeId;// = getUrlVars()["badgeID"];
+var _token;
+var _huntId;
+var _badgeId;
+var _marker;		// google maps marker
+
 
 function init() {
     lockQRButtons();
@@ -21,6 +23,7 @@ function init() {
 		setBadgeData();
 	}
 	
+	$("#btn-location").click(getCurrentLocation);
 	$("#badge-form-back-btn").click(goBack);
 	$("#badge-form-save-btn").click(foo);
 }
@@ -40,10 +43,6 @@ function goBack()
 }
 
 
-/*sets the badge-form to read only*/
-function setToReadOnly() {
-    
-}
 
 function huntStatus() {
 
@@ -71,27 +70,19 @@ function huntStatus() {
     });
 }
 
-/*
-function setFields(status) {
-    if (status == "submitted") {
-        //populate & set to read only
-        setBadgeData();
-        setToReadOnly();
-    } else if(status == "published"){
-        setToReadOnly();
-    }
-}
-*/
+
 /*lock the QR code radio buttons*/
 function lockQRButtons() {
     $("#badge-form :input[type=radio]").attr('disabled', true);
 
 }
 
+
 function getTok() {
     var tok = localStorage.getItem("token");
     return tok;
 }
+
 
 /** Get a Badge, populate fields **/
 function populateFields(badgeData) {
@@ -100,7 +91,10 @@ function populateFields(badgeData) {
     $("#badge-description").val(badgeData.landmark_name);
     $("#badge-latitude").val(badgeData.lat);
     $("#badge-longitude").val(badgeData.lon);
+    
+	initMap();	// initialize the map here, because otherwise the map thinks there's no lat/long
 }
+
 
 function setBadgeData() {
     $.ajax({
@@ -108,7 +102,6 @@ function setBadgeData() {
         contentType: "application/json",
         url: "https://magpiehunt.com/api/v1/hunts/" + _huntId +"/badges/" + _badgeId,
         dataType: "text",
-        timeout: 600000,
         "headers": {
             "Authorization": "Bearer " + _token,
         },
@@ -195,9 +188,10 @@ function postBadge()
 	});
 }
 
+
 function initMap() {
-    var lat = document.getElementById("badge-latitude").value;
-    var lon = document.getElementById("badge-longitude").value;
+    var lat = $("#badge-latitude").val();
+    var lon = $("#badge-longitude").val();
 
     if(lat == null || lon == null || lat == "" || lon == "") {
         //EWU coordinates used as default
@@ -213,15 +207,38 @@ function initMap() {
         center: myLatLng
     });
 
-    var marker = new google.maps.Marker({
+	//var marker
+    _marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
         draggable: true,
         title: 'Hello World!'
     });
-    google.maps.event.addListener(marker, 'dragend', function(event) {
+    
+    google.maps.event.addListener(_marker, 'dragend', function(event) {
         document.getElementById("badge-latitude").value = this.getPosition().lat();
         document.getElementById("badge-longitude").value = this.getPosition().lng();
     })
 }
 
+
+//gets the current location from the browser (should work in FF/Chrome, only tested in Chrome)
+function getCurrentLocation()
+{
+	navigator.geolocation.getCurrentPosition(setLatLong);
+	return false;
+}
+
+
+//call function for getCurrentLocation()
+function setLatLong(position)
+{
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	
+	$("#badge-latitude").val(lat);
+    $("#badge-longitude").val(lon);
+    
+    _marker.setPosition( new google.maps.LatLng( lat,lon ) );
+    map.panTo( new google.maps.LatLng( lat,lon ) );
+}

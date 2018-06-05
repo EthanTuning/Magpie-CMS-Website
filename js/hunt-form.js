@@ -104,6 +104,7 @@ function getHuntData(huntID) {
 		{
 			$("input").prop('disabled', true);
 			$("textarea").prop('disabled', true);
+			$("select").prop('disabled', true);
 		}
 		
 		$("#hunt-name").val(hunt.name);
