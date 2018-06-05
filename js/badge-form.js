@@ -225,7 +225,9 @@ function postBadge()
 			   alert(e.responseText);
 		   },
 		   500: function(e) {
-			   alert(e.responseText);
+			   //go to the next page
+				var nextPage = 'review-hunt.html?huntID=' + _huntId;
+				window.location.replace(nextPage);
 		   }
 	   },
 	  "processData": false,

@@ -174,7 +174,9 @@ function postaward()
 			   alert('bad request!');
 		   },
 		   500: function() {
-			   alert('nothing updated!');
+				//go to the next page
+				var nextPage = 'review-hunt.html?huntID=' + _huntId;
+				window.location.replace(nextPage);
 		   }
 	   },
 	  "processData": false,
