@@ -61,6 +61,7 @@ function huntStatus() {
             //disable inputs if hunt isn't approved
 			if (status != "non-approved")
 			{
+				$("textarea").prop('disabled', true);
 				$(".input").prop('disabled', true);
 			}
         },
