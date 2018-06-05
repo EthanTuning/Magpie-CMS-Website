@@ -23,6 +23,7 @@ function init() {
 		setawardData();
 	}
 	
+	$("#dropPin").click(function (event) {return false;});
 	$("#btn-location").click(getCurrentLocation);
 	$("#award-form-back-btn").click(goBack);
 	$("#award-form-save-btn").click(foo);
@@ -171,6 +172,9 @@ function postaward()
 
 			400: function() {
 			   alert('bad request!');
+		   },
+		   500: function() {
+			   alert('nothing updated!');
 		   }
 	   },
 	  "processData": false,

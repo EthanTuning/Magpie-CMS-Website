@@ -18,11 +18,12 @@ function init() {
 	huntStatus();  // set the input disable/enable based on hunt status
 	
 	// if a badgeID was passed, load in that badge
-	if (_badgeId != null)
+	if (_badgeId != null && _badgeId != "")
 	{
 		setBadgeData();
 	}
 	
+	$("#dropPin").click(function (event) {return false;});
 	$("#badge-landmark-image").change(landmarkFileChange);		// when file selector changes, update preview
 	$("#badge-icon").change(iconFileChange);
 	$("#btn-location").click(getCurrentLocation);
@@ -107,7 +108,7 @@ function getTok() {
 function populateFields(badgeData) {
     /*populates: badge name, description, location. will need to hide last 3 fields*/
     $("#badge-name").val(badgeData.name);
-    $("#badge-description").val(badgeData.landmark_name);
+    $("#badge-description").val(badgeData.description);
     $("#badge-latitude").val(badgeData.lat);
     $("#badge-longitude").val(badgeData.lon);
     
