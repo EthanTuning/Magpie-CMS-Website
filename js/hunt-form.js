@@ -8,9 +8,13 @@ $(document).ready(init);
 function init() {
     $("#hunt-form-submit-btn").click(submitHuntForm);		// Submit a hunt
     $("#hunt-form-back-btn").click(goBack);					// go back
-    $("#hunt-super-badge").change(superbadgePreview);
+    $("#hunt-super-badge").change(superbadgeFileChange);
     // if GET parameters passed, load the page with an AJAX call.
     huntID = findGetParameter('huntID');
+    
+    $("select").imagepicker();	//imagepicker stuff, makes superbadge grid
+    
+    
     
     if (huntID != null)
     {
@@ -54,6 +58,14 @@ function populateHuntForm(huntID) {
 	getHuntData(huntID);
 	return false;
 }
+
+
+/***  Populate the Superbadge selection grid ***/
+function makeSuperbadgeGrid()
+{
+	
+}
+
 
 
 /**
@@ -110,13 +122,7 @@ function getHuntData(huntID) {
 		sessionStorage.setItem('superbadgeURL', hunt.super_badge.href);
 		
 		// add superbadge preview to page
-		$("#hunt-super-badge").parent().prepend($("<img>", {
-				id : "super-badge-image",
-				src : hunt.super_badge.href,
-				height : 300,
-				width : 300
-				}
-		));
+		$("#super-badge-image").prop("src" , hunt.super_badge.href);
 		
 	});
 	
@@ -124,7 +130,7 @@ function getHuntData(huntID) {
 
 
 // Change the superbadge preview icon when selecting a new image
-function superbadgePreview(event)
+function superbadgeFileChange(event)
 {
 	var output = document.getElementById('super-badge-image');
     output.src = URL.createObjectURL(event.target.files[0]);
@@ -166,20 +172,33 @@ function postHuntData() {
 	form.append("state", $("#hunt-state").val());
 	form.append("zipcode", $("#hunt-zip").val());
 
-	//superbadge stuff
-	var file = document.getElementById("hunt-super-badge").files[0];
+	/// superbadge block ///
 	
-	if (file != null)
+	var picker = $("#hunt-super-badge-picker").val();
+	
+	if (picker != "")
 	{
-		form.append("super_badge", file);
+		//Picker selected, use that value as URL for superbadge
+		form.append("super_badge", picker);
 	}
 	else
 	{
-		var sburl = sessionStorage.getItem('superbadgeURL');
-		form.append("super_badge", sburl);
+		// File upload
+		var file = document.getElementById("hunt-super-badge").files[0];
+		
+		if (file != null)
+		{
+			// append the file
+			form.append("super_badge", file);
+		}
+		else
+		{
+			// get the already existing superbadge URL that was saved
+			var sburl = sessionStorage.getItem('superbadgeURL');
+			form.append("super_badge", sburl);
+		}
 	}
-
-	//console.log(form);
+	/// end superbadge block ///
 
 	// add on the /hunt_id if it exists
 	var huntExt = "";

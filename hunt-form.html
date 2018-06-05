@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bulma.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/image-picker.css"><!--Image Picker-->
     <link href="https://unpkg.com/ionicons@4.1.1/dist/css/ionicons.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
@@ -13,6 +14,7 @@
     <script src="js/firebase-utils.js"></script>
     <script src="js/master.js"></script>
     <script src="js/hunt-form.js"></script>
+    <script src="js/image-picker.js"></script><!--Image Picker-->
     <title>Hunt Details</title>
 </head>
 <body>
@@ -114,9 +116,30 @@
                 <p class="content">
                     Upload a PNG icon that represents your entire hunt.
                 </p>
-                <div class="field">
+                <div id="hunt-super-badge-holder" class="field">
+					<img id="super-badge-image" height=300 width=300 src="" />
                     <div class="control">
                         <input id="hunt-super-badge" type="file">
+                    </div>
+                    <div class="control">    
+						<p class="content">
+							Or, select a Superbadge from below:
+						</p>
+                        <select id="hunt-super-badge-picker" class="image-picker show-html">
+						  <option value=""></option>
+						  <option data-img-src="assets/super_badge/Magpie__Alive, Lively, Living.png" data-img-class="first" data-img-alt="Page 1" value="assets/super_badge/Magpie__Alive, Lively, Living.png">  Page 1  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Aluminum Fountain.png" data-img-alt="Page 2" value="assets/super_badge/Magpie__Aluminum Fountain.png">  Page 2  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Australian Sundial.png" data-img-alt="Page 3" value="assets/super_badge/Magpie__Australian Sundial.png">  Page 3  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Centennial Sculpture.png" data-img-alt="Page 4" value="assets/super_badge/Magpie__Centennial Sculpture.png">  Page 4  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Cooperation.png" data-img-alt="Page 5" value="assets/super_badge/Magpie__Cooperation.png">  Page 5  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Footsteps to the Future.png" data-img-alt="Page 6" value="assets/super_badge/Magpie__Footsteps to the Future.png">  Page 6  </option>
+						  <option data-img-src="assets/super_badge/Magpie__From This Earth.png" data-img-alt="Page 7" value="assets/super_badge/Magpie__From This Earth.png">  Page 7  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Light Reading.png" data-img-alt="Page 8" value="assets/super_badge/Magpie__Light Reading.png">  Page 8  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Michael P. Anderson Memorial.png" data-img-alt="Page 9" value="assets/super_badge/Magpie__Michael P. Anderson Memorial.png">  Page 9  </option>
+						  <option data-img-src="assets/super_badge/Magpie__Mountain Sheep.png" data-img-alt="Page 10" value="assets/super_badge/Magpie__Mountain Sheep.png"> Page 10 </option>
+						  <option data-img-src="assets/super_badge/Magpie__Riverpoint Observatory.png" data-img-alt="Page 11" value="assets/super_badge/Magpie__Riverpoint Observatory.png"> Page 11 </option>
+						  <option data-img-src="assets/super_badge/Magpie__The Childhood Express.png" data-img-alt="Page 12" data-img-class="last" value="assets/super_badge/Magpie__The Childhood Express.png"> Page 12 </option>
+						</select>
                     </div>
                 </div>
                 <h2 class="title is-3">HUNT AUDIENCE</h2>
