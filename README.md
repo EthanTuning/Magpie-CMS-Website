@@ -3,14 +3,14 @@
 
 Magpie is a content management system for creating and hosting scavenger hunts. Creators can create a hunt on the Magpie website which will be stored on the server. Players can then download and participate in these hunts by using the Magpie mobile app. The goal of Magpie to provide educational and commercial scavenger hunts that are engaging with the community.
 
-This Magpie CMS Website is an independent website for the creation, managing, and deletion of hunts in the CMS backend. This website frontend is built to work with the Magpie-PHP codebase. The site relies purely on the API and can be ran separately from the backend server.
+This Magpie CMS Website is an independent website for the creation, managing, and deletion of hunts in the CMS backend. This website frontend is built to work with the [Magpie-CMS-API](https://github.com/rkwitz/Magpie-CMS-API) codebase. The site relies purely on the API and can be ran separately from the backend server.
 
 ### Sections
- - [User Guide](#User Guide)
+ - [User Guide](#user-guide)
  
- - [Admin Guid](#Admin Guide)
+ - [Admin Guid](#admin-guide)
 
- - [Development](#Development)
+ - [Development](#development)
 
 ### User Guide
 The starting page is the index.html file for the website. Standard information for the website is provided on the web page. The login page will allow the user to log in with a Google account or a regular email depending on how the Google Firebase authentication is configured. If the user is already signed in, the user will automatically redirected to the next page.
