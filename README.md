@@ -3,14 +3,14 @@
 
 Magpie is a content management system for creating and hosting scavenger hunts. Creators can create a hunt on the Magpie website which will be stored on the server. Players can then download and participate in these hunts by using the Magpie mobile app. The goal of Magpie to provide educational and commercial scavenger hunts that are engaging with the community.
 
-This Magpie CMS Website is an independent website for the creation, managing, and deletion of hunts in the CMS backend. This website frontend is built to work with the Magpie-PHP codebase. The site relies purely on the API and can be ran separately from the backend server.
+This Magpie CMS Website is an independent website for the creation, managing, and deletion of hunts in the CMS backend. This website frontend is built to work with the [Magpie-CMS-API](https://github.com/rkwitz/Magpie-CMS-API) codebase. The site relies purely on the API and can be ran separately from the backend server.
 
 ### Sections
- - [User Guide](#User Guide)
+ - [User Guide](#user-guide)
  
- - [Admin Guid](#Admin Guide)
+ - [Admin Guid](#admin-guide)
 
- - [Development](#Development)
+ - [Development](#development)
 
 ### User Guide
 The starting page is the index.html file for the website. Standard information for the website is provided on the web page. The login page will allow the user to log in with a Google account or a regular email depending on how the Google Firebase authentication is configured. If the user is already signed in, the user will automatically redirected to the next page.
@@ -36,10 +36,16 @@ The my hunts page serves to view all the hunts the particular user has, see the 
 ### Admin Guide
 The admin login page is located at `/admin/admin-login.html`. It uses the same login code as the creator login. The user will have to be manually flagged in the database as a admin in the users table for them to be permitted to access and use the admin pages.
 
-After logging in, the admin page will list the pending and approved hunts. All the hunts can be view in more detail or delete from this page. The admin is in charge of making sure the hunts do not violate any of the policies and do not trespass onto private property. The all hunts section has hunts that are waiting to be approved with the check mark box that will approve them for public participation.
+After logging in, the admin page will list the pending and approved hunts. All the hunts can be view in more detail or delete from this page. The admin is in charge of making sure the hunts do not violate any of the policies and do not trespass onto private property. The all hunts section has hunts that are waiting to be approved in the submitted hunts and approved hunts in the section below.
+
+![admin overview](./docs/imgs/admin-overview.png)
+
+Clicking the eye icon next the hunt will view that hunt in more detail. In that view, details of that hunt are displayed (hunt, badges, & award). At the bottom are buttons to reject and approve the hunt. Choose to approve or reject the hunt based on the quality of the hunt content displayed above.
+
+![admin hunt detail view](./docs/imgs/admin-review.png)
 
 ### Development
-The development can be done in notepad to WebStorm. It doesn't really matter since it is straight HTML and JavaScript. There are no frameworks required for these pages but could be refactor to incorporate them if their functionality is expanded.
+The development can be done in notepad++ to WebStorm. It doesn't really matter since it is straight HTML and JavaScript. There are no frameworks required for these pages but could be refactor to incorporate them if their functionality is expanded.
 
 The pages are laid out with `name.html` corresponding to `./js/name.js` file for the corresponding functionality of that page. All the pages have the `master.js` embedded with them. Most pages also have the `firebase-utils.js` included since they handle authentication for all API requests and redirecting to the login if the user is not logged in. Please note that the import order of the JS files does matter for some code like the `firebase-utils.js`.
 

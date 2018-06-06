@@ -21,7 +21,13 @@ firebase.auth().onAuthStateChanged(function(user){
         // signed out
         console.log("user is NOT signed in");
         alert("You have been logged out of your account. Returning to login.");
-        window.location.href = "index.html";
+
+        if (window.location.pathname.includes("/admin/", 0)) {
+            window.location.href = "admin-login.html";
+        } else {
+            window.location.href = "index.html";
+        }
+
     }
 });
 

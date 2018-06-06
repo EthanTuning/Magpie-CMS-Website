@@ -116,7 +116,7 @@ function addTile(hunt)
 	}
 	
 	//image
-	var image = $('<img>',{id:'hunts-hunt-super-badge-icon',src: superBadgeImage });
+	var image = $('<img>',{id:'hunts-hunt-super-badge-icon',src: superBadgeImage, width: 170, height:170 });
 	
 	// delete button
 	var button = $("<button>", {
