@@ -194,9 +194,11 @@ function postaward()
 	});
 }
 
+
 function initMap() {
-    var lat = document.getElementById("award-latitude").value;
-    var lon = document.getElementById("award-longitude").value;
+	geocoder = new google.maps.Geocoder();
+    var lat = $("#award-latitude").val();
+    var lon = $("#award-longitude").val();
 
     if(lat == null || lon == null || lat == "" || lon == "") {
         //EWU coordinates used as default
@@ -208,22 +210,54 @@ function initMap() {
     var myLatLng = {lat: parseFloat(lat), lng: parseFloat(lon)};
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
+        zoom: 15,
         center: myLatLng
     });
 
+	//var marker
     _marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        draggable: true,
-        title: 'Hello World!'
+        draggable: true
     });
+    
     google.maps.event.addListener(_marker, 'dragend', function(event) {
         document.getElementById("award-latitude").value = this.getPosition().lat();
         document.getElementById("award-longitude").value = this.getPosition().lng();
     })
 }
 
+var geocoder;
+
+function googleSearch() {
+
+    var searchTerm = $("#search-input").val();
+
+    geocoder.geocode( { 'address': searchTerm}, function(results, status) {
+        
+        if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+        } else {
+            alert('Uh Oh: ' + status);
+        }
+    });
+}
+
+function dropMarker() {
+
+	_marker.setMap(null);
+
+    _marker = new google.maps.Marker({
+        position: map.getCenter(),
+        map: map,
+        draggable: true
+    });
+    
+    google.maps.event.addListener(_marker, 'dragend', function(event) {
+        document.getElementById("award-latitude").value = this.getPosition().lat();
+        document.getElementById("award-longitude").value = this.getPosition().lng();
+    })
+}
 
 //gets the current location from the browser (should work in FF/Chrome, only tested in Chrome)
 function getCurrentLocation()
@@ -245,5 +279,3 @@ function setLatLong(position)
     _marker.setPosition( new google.maps.LatLng( lat,lon ) );
     map.panTo( new google.maps.LatLng( lat,lon ) );
 }
-
-

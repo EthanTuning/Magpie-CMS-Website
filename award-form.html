@@ -75,8 +75,9 @@
                     <p class="content">
                         To locate this item, click to drop a pin on the map or enter the latitude and longitude
                     </p>
+                    <input id="search-input" placeholder="EWU"/> <input type="button" id="search-btn" value="Search" onclick="googleSearch()"/>
                     <div id="map-container">
-                        <div id="map" style="height: 400px; width:400px;"></div>
+                        <div id="map" style="height: 600px; width:600px;"></div>
                         <br>
                     </div>
                     <div class="field">
@@ -86,6 +87,7 @@
                         </div>
                         <div>
                             <!--button id="dropPin">Drop Pin</button-->
+                            <input type="button" value="Drop Marker" onclick="dropMarker()"/>  
                             <button id="btn-location">Get Current Location</button>
                         </div>
                     </div>

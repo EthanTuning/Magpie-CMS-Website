@@ -123,6 +123,14 @@ p {
     width: 100%;
 }
 
+.show-icon-on-hover div .icon {
+    visibility: hidden;
+}
+
+.show-icon-on-hover div:hover .icon {
+    visibility: visible;
+}
+
 /******** Navbar ********/
 
 #menu-header {

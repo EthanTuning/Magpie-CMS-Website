@@ -5,7 +5,7 @@ $(document).ready(init);
 var _token;
 var _huntId;
 var _badgeId;
-var _marker;		// google maps marker
+var _marker;	// google maps marker
 
 
 function init() {
@@ -249,6 +249,7 @@ function postBadge()
 
 
 function initMap() {
+	geocoder = new google.maps.Geocoder();
     var lat = $("#badge-latitude").val();
     var lon = $("#badge-longitude").val();
 
@@ -262,7 +263,7 @@ function initMap() {
     var myLatLng = {lat: parseFloat(lat), lng: parseFloat(lon)};
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
+        zoom: 15,
         center: myLatLng
     });
 
@@ -270,8 +271,7 @@ function initMap() {
     _marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        draggable: true,
-        title: 'Hello World!'
+        draggable: true
     });
     
     google.maps.event.addListener(_marker, 'dragend', function(event) {
@@ -280,6 +280,37 @@ function initMap() {
     })
 }
 
+var geocoder;
+
+function googleSearch() {
+
+    var searchTerm = $("#search-input").val();
+
+    geocoder.geocode( { 'address': searchTerm}, function(results, status) {
+        
+        if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+        } else {
+            alert('Uh Oh: ' + status);
+        }
+    });
+}
+
+function dropMarker() {
+
+	_marker.setMap(null);
+
+    _marker = new google.maps.Marker({
+        position: map.getCenter(),
+        map: map,
+        draggable: true
+    });
+    
+    google.maps.event.addListener(_marker, 'dragend', function(event) {
+        document.getElementById("badge-latitude").value = this.getPosition().lat();
+        document.getElementById("badge-longitude").value = this.getPosition().lng();
+    })
+}
 
 //gets the current location from the browser (should work in FF/Chrome, only tested in Chrome)
 function getCurrentLocation()
