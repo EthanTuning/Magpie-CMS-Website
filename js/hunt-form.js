@@ -11,7 +11,7 @@ function init() {
     $("#hunt-super-badge").change(superbadgeFileChange);
     // if GET parameters passed, load the page with an AJAX call.
     huntID = findGetParameter('huntID');
-    
+    sessionStorage.removeItem('superbadgeURL');
     $("select").imagepicker();	//imagepicker stuff, makes superbadge grid
     
     

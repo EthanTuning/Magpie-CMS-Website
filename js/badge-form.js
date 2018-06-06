@@ -16,7 +16,9 @@ function init() {
 	_badgeId = getUrlVars()["badgeID"];
 	
 	huntStatus();  // set the input disable/enable based on hunt status
-	
+	sessionStorage.removeItem('iconURL');	//remove session storage stuff
+    sessionStorage.removeItem('imageURL');
+    
 	// if a badgeID was passed, load in that badge
 	if (_badgeId != null && _badgeId != "")
 	{
